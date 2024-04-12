@@ -1,0 +1,11 @@
+{
+    "name": "sys4soft/bng",
+    "description": "aplicação gestao",
+    "type": "project",
+    "authors": [
+        {
+            "name": "cristiano"
+        }
+    ],
+    "require": {}
+}
