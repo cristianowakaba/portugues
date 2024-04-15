@@ -26,16 +26,15 @@ class Router
         // method parameters
         $parameters = $_GET;
 
-        // remove controller dos parametros
+        // remove controller from parameters
         if(key_exists("ct", $parameters)) {
             unset($parameters["ct"]);
         }
 
-        // remove  o metodo dos parametros
+        // remove method from parameters
         if(key_exists("mt", $parameters)) {
             unset($parameters["mt"]);
         }
-        
 
         // tries to instanciate the controller and execute the method
         try {

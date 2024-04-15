@@ -7,21 +7,9 @@ use bng\Models\Agents;
 
 class Main extends BaseController
 {
-
     public function index()
     {
-        $data['nome']="joao";
-        $data['apelido']="ribeiro";
-       
-         $this->view('layouts/html_header');
-         $this->view('home', $data);
-         $this->view('layouts/html_footer');
-        
-        $model = new Agents();
-       $results= $model->get_results();
-       printData($results);
-
-        //$this->view('layouts/html_header');
+        $this->view('layouts/html_header');
 
         // login
         // $this->view('login_frm');
@@ -42,7 +30,7 @@ class Main extends BaseController
         // $this->view('reset_password_define_password_success');
         
         // nav bar
-       // $this->view('navbar');
+        $this->view('navbar');
         
         // homepage
         // $this->view('homepage');
@@ -93,7 +81,7 @@ class Main extends BaseController
         // stats
         // $this->view('stats'); 
 
-       // $this->view('footer');
-        //$this->view('layouts/html_footer');
+        $this->view('footer');
+        $this->view('layouts/html_footer');
     }
 }

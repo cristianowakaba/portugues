@@ -1,10 +1,11 @@
 {
     "name": "sys4soft/bng",
-    "description": "aplicação gestao",
+    "description": "Aplicacao para gestao de name gathering.",
     "type": "project",
     "authors": [
         {
-            "name": "cristiano"
+            "name": "Joao Ribeiro",
+            "email": "joaoribeiro@gmail.com"
         }
     ],
     "require": {},
