@@ -7,6 +7,7 @@ use bng\System\Database;
 abstract class BaseModel
 {
     public $db;
+    //================================================================
 
     public function db_connect()
     {
@@ -18,9 +19,17 @@ abstract class BaseModel
         ];
         $this->db = new Database($options);
     }
+    //================================================================
 
     public function query($sql = "", $params = [])
     {
         return $this->db->execute_query($sql, $params );
     }
+    
+    //================================================================
+
+    public function non_query($sql = "", $params = [])
+    {
+        return $this->db->execute_non_query($sql, $params);
+}
 }

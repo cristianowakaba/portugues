@@ -31,6 +31,10 @@ class Main extends BaseController
             $data['validation_errors'] = $_SESSION['validation_errors'];
             unset($_SESSION['validation_errors']);
         }
+        if (!empty($_SESSION['server_error'])) {
+            $data['server_error'] = $_SESSION['server_error'];
+            unset($_SESSION['server_error']);
+        }
 
         $this->view('layouts/html_header');
         $this->view('login_frm', $data);
@@ -75,17 +79,27 @@ class Main extends BaseController
         }
         $model = new Agents();
         $result = $model->check_login($username, $password);
-        if ($result['status']) {
-            echo 'ok!';
-        } else {
-            echo 'nok!';
+        if (!$result['status']) {
+            $_SESSION['server_error'] = 'Login inválido';
+            $this->login_frm();
+            return;
         }
+        $results = $model->get_user_data($username);
+      
+        $_SESSION['user'] = $results['data'];
+
+
+        $results = $model->set_user_last_login($_SESSION['user']->id);
+        $this->index();
     }
 }
 /* 
+
+
+aula 447 encriptaçãod e dados
 admin@bng.com   Aa123456
-admin1@bng.com   Aa123456
-admin2@bng.com   Aa123456
+agente1@bng.com   Aa123456
+agente2@bng.com   Aa123456
 aula 445
 
 */
