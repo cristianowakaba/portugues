@@ -40,10 +40,11 @@ public function get_user_data($username)
     $results = $this->query(
         "SELECT ".
         "id, ". 
-        "AES_DECRYPT(name,'".MYSQL_AES_KEY."') = name, ". 
-        "profile ". 
-        "FROM agents ". 
-        "WHERE AES_ENCRYPT(:username,'".MYSQL_AES_KEY."') = name",$params);
+        "AES_DECRYPT(name, '" . MYSQL_AES_KEY . "')  name, ". 
+        "profile " . 
+        "FROM agents " . 
+        "WHERE AES_ENCRYPT(:username, '" . MYSQL_AES_KEY. "') = name",$params);
+        
 
         return[
             'status' =>'success',

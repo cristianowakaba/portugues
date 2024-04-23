@@ -13,8 +13,14 @@ class Main extends BaseController
             $this->login_frm();
             return;
         }
+
+        $data['user'] = $_SESSION['user'];
+
         $this->view('layouts/html_header');
-        echo '<h3 class="text-white text-center">ola mundo</h3>';
+        $this->view('navbar',$data);
+        $this->view('homepage',$data);
+        $this->view('footer');
+        
         $this->view('layouts/html_footer');
     }
     //================================================================
@@ -84,14 +90,22 @@ class Main extends BaseController
             $this->login_frm();
             return;
         }
+
         $results = $model->get_user_data($username);
-      
-        $_SESSION['user'] = $results['data'];
+    //    printData($results);
+       
 
-
+$_SESSION['user'] = $results['data'];
         $results = $model->set_user_last_login($_SESSION['user']->id);
+
+      $this->index();
+    }
+    public function logout()
+    {
+        unset($_SESSION['user']);
         $this->index();
     }
+
 }
 /* 
 
@@ -100,6 +114,6 @@ aula 447 encriptaçãod e dados
 admin@bng.com   Aa123456
 agente1@bng.com   Aa123456
 agente2@bng.com   Aa123456
-aula 445
+aula 452
 
 */
