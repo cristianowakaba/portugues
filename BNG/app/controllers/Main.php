@@ -86,10 +86,15 @@ class Main extends BaseController
         $model = new Agents();
         $result = $model->check_login($username, $password);
         if (!$result['status']) {
+            //Logger
+            Logger("$username - Login inválido",'error');
+
             $_SESSION['server_error'] = 'Login inválido';
             $this->login_frm();
             return;
         }
+         //Logger
+         Logger("$username - Login com sucesso");
 
         $results = $model->get_user_data($username);
     //    printData($results);
@@ -102,6 +107,8 @@ $_SESSION['user'] = $results['data'];
     }
     public function logout()
     {
+        Logger($_SESSION['user']->name.' - fez logout');
+
         unset($_SESSION['user']);
         $this->index();
     }
