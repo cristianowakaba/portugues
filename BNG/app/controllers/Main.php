@@ -107,6 +107,12 @@ $_SESSION['user'] = $results['data'];
     }
     public function logout()
     {
+        // desabilitar acesso direto ao logout
+        if(!check_session()){
+            $this->index();
+            return;
+        }
+
         Logger($_SESSION['user']->name.' - fez logout');
 
         unset($_SESSION['user']);
