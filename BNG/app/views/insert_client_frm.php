@@ -50,22 +50,27 @@
                                 <label for="text_interests" class="form-label">Interesses<span class="ms-4"><small>(Palavras separadas por virgulas)</small></span></label>
                                 <input type="text" class="form-control" name="text_interests" id="text_interests">
                             </div>
-                            
+
                             <div class="mb-3 text-center">
-                                <a href="?ct=main&mt=index" class="btn btn-secondary"><i class="fa-solid fa-xmark me-2"></i>Cancelar</a>
+                                <a href="?ct=agent&mt=my_clients" class="btn btn-secondary"><i class="fa-solid fa-xmark me-2"></i>Cancelar</a>
                                 <button type="submit" class="btn btn-secondary"><i class="fa-regular fa-floppy-disk me-2"></i>Guardar</button>
                             </div>
-                           
-                        
-                            <?php if(isset($validation_errors)):?>
-                                <div class="alert alert-danger p-2 ">
+
+
+                            <?php if (isset($validation_errors)) : ?>
+                                <div class="alert alert-danger p-2 text-center">
                                     <ul>
-                                        <?php foreach($validation_errors as $error):?>
-                                            <li><?php echo $error;?></li>
-                                        <?php endforeach;?>
+                                        <?php foreach ($validation_errors as $error) : ?>
+                                            <li><?php echo $error; ?></li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </div>
-                            <?php endif;?>
+                            <?php endif; ?>
+                            <?php if (isset($server_error)) : ?>
+                                <div class="alert alert-danger p-2 text-center ">
+                                    <?php echo $server_error; ?>
+                                </div>
+                            <?php endif; ?>
 
                         </form>
                     </div>
@@ -76,5 +81,7 @@
     </div>
 </div>
 <script>
-    flatpickr("#text_birthdate",{ dateFormat: "d/m/Y" })
+    flatpickr("#text_birthdate", {
+        dateFormat: "d/m/Y"
+    })
 </script>

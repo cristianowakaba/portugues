@@ -45,3 +45,8 @@
 [2024-04-27T17:42:52.049199+02:00] app_logs.ERROR: agente1@bng.com - Login inválido [] []
 [2024-04-27T17:43:04.638750+02:00] app_logs.ERROR: agente1@bng.com - Login inválido [] []
 [2024-04-27T17:43:18.424815+02:00] app_logs.INFO: agente1@bng.com - Login com sucesso [] []
+[2024-04-29T08:07:50.946252+02:00] app_logs.INFO: agente1@bng.com - fez logout [] []
+[2024-04-29T08:08:02.838451+02:00] app_logs.ERROR: agente2@bng.com - Login inválido [] []
+[2024-04-29T08:08:29.804196+02:00] app_logs.INFO: agente2@bng.com - Login com sucesso [] []
+[2024-04-29T08:08:43.938083+02:00] app_logs.INFO: agente2@bng.com - fez logout [] []
+[2024-04-29T08:09:09.172920+02:00] app_logs.INFO: agente1@bng.com - Login com sucesso [] []

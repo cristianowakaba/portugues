@@ -10,3 +10,9 @@ define('MYSQL_PASSWORD',    '3LduNkJe55lVk0iaQRXvV0j1tZpA7OW5');
 
 define('MYSQL_AES_KEY', 'Vduu47qL51hLn6bkYkY6NlO1nivsmdfD');
 define('LOGS_PATH',  __DIR__ . '/../logs/app.log');
+
+// openssl
+define('OPENSSL_KEY',       'H0SDRQzIGqclX2kbYBk9xspdn9U5f3Wa');
+define('OPENSSL_IV',        'BzKAbjuREsHgnw56');
+
+

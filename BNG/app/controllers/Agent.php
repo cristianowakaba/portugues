@@ -41,22 +41,26 @@ class Agent extends BaseController
 
         $data['user'] = $_SESSION['user'];
         $data['flatpickr'] = true;
-        
+
         //checar se tem erros na sessão
         if (!empty($_SESSION['validation_errors'])) {
             $data['validation_errors'] = $_SESSION['validation_errors'];
 
             unset($_SESSION['validation_errors']);
-            
         }
+        //checar se tem erros de da parte de servidor
+        if (!empty($_SESSION['server_error'])) {
+            $data['server_error'] = $_SESSION['server_error'];
+            unset($_SESSION['server_error']);
+
+        }
+            $this->view('layouts/html_header', $data);
+            $this->view('navbar', $data);
+            $this->view('insert_client_frm', $data);
+            $this->view('footer');
+
+            $this->view('layouts/html_footer');
         
-
-        $this->view('layouts/html_header', $data);
-        $this->view('navbar', $data);
-        $this->view('insert_client_frm', $data);
-        $this->view('footer');
-
-        $this->view('layouts/html_footer');
     }
     //================================================================
     public function new_client_submit()
@@ -115,19 +119,35 @@ class Agent extends BaseController
 
         if (!empty($validation_errors)) {
             $_SESSION['validation_errors'] = $validation_errors;
-           
-           $this->new_client_frm();
-            
+
+            $this->new_client_frm();
+            return;
         }
+        //verifica sehá clientes com mesmo nome
+        $model = new Agents();
+        $results = $model->check_if_client_exists($_POST);
+       
+        if ($results['status']) {
+            $_SESSION['server_error'] = "Já existe um cliente com esse nome";
+            $this->new_client_frm();
+            return;
+        }
+        //adiciona novo cliente no banco de dados
+        $model->add_new_client_to_database($_POST);
+
+        // retorna pro main clients
+        $this->my_clients();
+
+       // printData($_POST);
     }
     //================================================================
     public function edit_client($id)
     {
-        echo "editar $id";
+        echo "editar " . aes_decrypt($id);
     }
     //================================================================
     public function delete_client($id)
     {
-        echo "deletar $id";
+        echo "deletar "  . aes_decrypt($id);
     }
 }
